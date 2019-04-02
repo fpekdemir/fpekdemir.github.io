@@ -9,6 +9,6 @@ url: 'https://fpekdemir.github.io'
 twitter_username: hard_zess
 github_username: fpekdemir
 markdown: kramdown
-theme: jekyll-clean-dark
+remote-theme: streetturtle/jekyll-clean-dark
 plugins:
   - jekyll-feed
