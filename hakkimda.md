@@ -11,3 +11,5 @@ Bilişim Sertifikalarım:
 2. İSMEK Fortigate Eğitimi
 3. İSMEK Sistem Yöneticiliği (Windows Server)
 4. Ağ Yöneticileri Derneği - CCNA 200-125
+
+Hobilerim : Ney üflemek,
