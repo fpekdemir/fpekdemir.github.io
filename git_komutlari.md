@@ -2,9 +2,6 @@
 title: Git Komutları
 ---
 
-![](https://fpekdemir.github.io/git_logo.png)
-#### Git Komutları
-
 `git config --global user.name "Fatih Pekdemir"`
 `git config --global user.email "emailimiz@email.com"`
 `git config --global user.name`  <!--kullanıcı adı ogrenilebilir-->
