@@ -23,10 +23,13 @@ title: Git Komutları
 
 `git rm dosyaismi`  <!--dosyayı silmeye yarar ama şu halde henüz commit e bildirilmediği için staging area da.-->
 `git commit -m "dosya silindi"`
+
 `git rm -r silinecekler/` //<!--silinecekler dizini altındakilerle beraber siler.-->
+
 `git commit -m "klasör silindi."`
 
 `git mv deneme.txt test.txt` <!--deneme.txt dosyasının adını test.txt yaptık-->
+
 `git mv test.txt dosyalar/`  <!--test.txt dosyasını dosyalar dizini altına taşıyoruz.-->
 
 
@@ -34,15 +37,17 @@ title: Git Komutları
 **Projeyi yanlışlıkla silmek/değiştirmek gibi hataları geriye döndürmek için;**
 
  `git checkout -- kurtarılacakdosyaismi` <!--Eğer henüz commit etmemişsek geçiş bölgesinden geri döndürmek için-->
+ 
 `git checkout --`    <!--  Eğer dosyayı yanlışlıkla silmişsek ve commit etmemişsek (-- den sonra boşluk olmasına dikkat et.)-->
+
  `git reset HEAD dosyaismi` <!--Eğer yanlışlıkla staging area ya git add komutuyla bir dosya atmışsak bunu geri almak için-->
+ 
 
  `git checkout versiyonhashkodutamamı yada ilk 7 hanesi -- .`  <!--projemdeki bütün doysaları versiyon 2 ye çevir.-->
+ 
 `git log`
+
 `git commit -m "versiyon 2 den kopya alındı."`
-
-
-
 
 
 `git remote add githubrepotakmaisim https://github.com/fpekdemir/gitkomutlari.git` <!--github da olusturdugumuz projenin baglantisini ekledik-->
@@ -56,9 +61,6 @@ title: Git Komutları
 `git commit -m "dosya.txt silindi"` <!--commit ledik-->
 
 `git push -u ` githubrepotakmaisim master   <!--son degisiklere github a projemizi yolladık yine bize github kullanıcı adı ve şifre isteyecek-->
-
-
-
 
 
 cat >> .gitignore
