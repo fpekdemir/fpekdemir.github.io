@@ -3,7 +3,9 @@ title: Git Komutları
 ---
 
 `git config --global user.name "Fatih Pekdemir"`
+
 `git config --global user.email "emailimiz@email.com"`
+
 `git config --global user.name`  <!--kullanıcı adı ogrenilebilir-->
 
 `git init` <!--icinde bulundugumuz dizini git projesi dizini haline getirir. Gizli dizin seklinde bir .git dizini olustugu gorulebilir.--> 
