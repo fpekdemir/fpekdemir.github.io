@@ -60,7 +60,7 @@ title: Git Komutları
 
 `git commit -m "dosya.txt silindi"` <!--commit ledik-->
 
-`git push -u ` githubrepotakmaisim master   <!--son degisiklere github a projemizi yolladık yine bize github kullanıcı adı ve şifre isteyecek-->
+`git push -u githubrepotakmaisim master`   <!--son degisiklere github a projemizi yolladık yine bize github kullanıcı adı ve şifre isteyecek-->
 
 
 cat >> .gitignore
