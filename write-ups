@@ -1,0 +1,272 @@
+ringzer0team.com challenges 75:
+http://challenges.ringzer0team.com:10075/?page=/etc/passwd
+FLAG-zH9g1934v774Y7Zx5s16t5ym8Z
+
+https://ringzer0ctf.com/challenges/25
+SYNTPrfneVfPbbyOhgAbgFrpher >>>rot13>> FLAGCesarIsCoolButNotSecure
+
+https://ringzer0ctf.com/challenges/51
+
+d22fdb09ef96576dfc49076a9322a555.tar dosyasının içinde
+\Policies{75DE8F0A-DEC0-441F-AE29-90DFAFCF632B}\User\Preferences\Groups\
+dizininde Groups.xml isimli dosyamızın içeriğinde bir satır gözümüze çarpmakta
+cpassword="PCXrmCkYWyRRx3bf+zqEydW9/trbFToMDx6fAvmeCDw"
+İnternette biraz araştırınca açığın "Group Policy Preferences Saved Passwords"(MS14-25) zaafiyeti
+olduğunu algoritmanın zayıflığından ötürü şifrenin kırılabileceğini öğreniyoruz.
+http://carnal0wnage.attackresearch.com/2012/10/group-policy-preferences-and-getting.html
+linkinde ruby dilinde yazılmış şifre çözücümüz var.
+encryted_data = "PCXrmCkYWyRRx3bf+zqEydW9/trbFToMDx6fAvmeCDw" şeklinde değiştiriyoruz.
+>ruby ms14-25.rb
+LocalRoot!
+
+Flag: LocalRoot!
+
+https://ringzer0ctf.com/challenges/86
+5bd2510a83e82d271b7bf7fa4e0970d2.zip ten çıkan dosyayımızın 
+file 5bd2510a83e82d271b7bf7fa4e0970d1  dediğimizde data olduğunu,
+strings 5bd2510a83e82d271b7bf7fa4e0970d1 dediğimizde ise VBOX ait bir memory dump dosyası olduğunu anlıyoruz. 
+
+>volatility -f /home/User/Desktop/ringzer0ctf/challenge86/5bd2510a83e82d271b7bf7fa4e0970d1 imageinfo
+  Win7SP1x86_23418
+[Burada challengenin başlığı dikkatimi çekti. İpucu gibi bir başlık vermişler. "Do not waste the >>environment<<" ]
+volatilityde bunu deneyelim envar plugini kullanıyoruz.
+>volatility -f /home/User/Desktop/ringzer0ctf/challenge86/5bd2510a83e82d271b7bf7fa4e0970d1 --profile=Win7SP1x86_23418 envars
+...
+1972 taskhost.exe         0x000d07f0 F l a g -                      66d7724d872da91af56907aea0f6bfb8
+....
+Flag :   Flag-66d7724d872da91af56907aea0f6bfb8
+
+https://ringzer0ctf.com/challenges/87
+Did you see my desktop? başlıklı yine bize ipucu vermiş olabilir. 
+volatility -h yazıp volatility'de windows desktop ile bir plugin var mı bakıyorum.
+...
+windows            Print Desktop Windows (verbose details)   [Evet varmış :wink: ]
+...
+
+volatility -f /home/User/Desktop/ringzer0ctf/challenge87/5bd2510a83e82d271b7bf7fa4e0970d1 --profile=Win7SP1x86_23418 windows
+Yüzlerce satırın arasından şurası gözümüze çarpıyor.
+Window Handle: #1012e at 0xfe80dc28, Name: F$L%A^G-5bd2510a83e82d271b7bf7fa4e0970d1 - Notepad
+
+Flagın düzenlenmiş hali: FLAG-5bd2510a83e82d271b7bf7fa4e0970d1
+
+https://ringzer0ctf.com/challenges/88
+Suspicious account password? (Bu seferki şüpheli hesabımızın -flag- şifresini istemekte. )
+İlk olarak mimikatz ı denediğimde birşey çıkmadı
+volatility -f /home/User/Desktop/ringzer0ctf/challenge88/5bd2510a83e82d271b7bf7fa4e0970d1 --profile=Win7SP1x86_23418 mimikatz 
+Module   User             Domain           Password
+-------- ---------------- ---------------- ----------------------------------------
+
+İkinci olarak hashdump plugini denedim ve LM/NTLM hashleriyle birlikte kullanıcılar listelendi.
+volatility -f /home/User/Desktop/ringzer0ctf/challenge88/5bd2510a83e82d271b7bf7fa4e0970d1 --profile=Win7SP1x86_23418 hashdump
+Volatility Foundation Volatility Framework 2.6
+**
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+flag:1000:aad3b435b51404eeaad3b435b51404ee:3008c87294511142799dca1191e69a0f:::
+
+şüpheli hesap ve LM/NTLM hash değeri :  flag:1000:aad3b435b51404eeaad3b435b51404ee:3008c87294511142799dca1191e69a0f:::
+hashimizi(3008c87294511142799dca1191e69a0f) https://crackstation.net/ e yapıştırıp şifreyi "admin123" olarak buluyoruz.
+
+Flag: admin123
+
+https://ringzer0ctf.com/challenges/70
+Şiirin ilk harfleri yukarıdan aşağıya. FLAGCMPHDDSQNUCCPNNSOQACJOOP
+
+https://ringzer0ctf.com/challenges/1
+password kısmına en çok kullanılan sql injection satırını yazıyoruz: ' or '1'='1 
+FLAG-238974289383274893
+
+https://ringzer0ctf.com/challenges/2
+Alta açılır menüde üç kullanıcı ismi bulunuyor.Biriniseçip ListUser butonuna 
+tıkladığımız anda POST isteğimiz gidiyor.
+Bu post requesti görüntüleyip tekrar düzenlemek için BurpSuite mizi açıp ListUser butonuna 
+tıkladığımız anda aşağıdaki gibi isteğimize yanıtımız geliyor.Tümünü seçip sağ tuş send to repeater diyoruz.
+
+--------------------------------------------------------------------------------------------
+POST /challenges/2 HTTP/1.1
+Host: ringzer0ctf.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8
+Accept-Language: tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: https://ringzer0ctf.com/challenges/2
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 19
+DNT: 1
+Connection: close
+Cookie: PHPSESSID=asj0isccdhms2qh0s8cesk5ca2
+Upgrade-Insecure-Requests: 1
+
+username=admin
+--------------------------------------------------------------------------------------------
+Repeater sekmesine geçip son satırdaki admin yerine meşhur satırımızı yani 'or '1'='1 koyup go diyoruz 
+ve tüm kullanıcı bilgileri önümüze seriliyor.
+
+FLAG-sdfoip340e89rfuj34woit
+
+
+https://ringzer0ctf.com/challenges/3
+
+username:admin' or '1'='1 
+password:12456
+Şeklinde yazınca "Illegal characters detected." uyarısı verdi.
+Bunu atlatmak için ileri seviye sql injection gerekli.
+username:admin' or 1 or '1"or 1 or"
+password:123456
+
+şeklinde yazınca FLAG-4f885o1dal0q1huj6eaxuatcvn
+
+
+https://ringzer0ctf.com/challenges/27
+Tipik bir login formu. Sayfa kaynağına gözatıyoruz.
+...
+ // Look's like weak JavaScript auth script :smiley:   // sağolsun ipucu da vermiş :]
+if(u == "admin" && p == String.fromCharCode(74,97,118,97,83,99,114,105,112,116,73,115,83,101,99,117,114,101))
+...
+
+admin kullanıcımızın şifresini p == String.fromCharCode(74,97,118,97,83,99,114,105,112,116,73,115,83,101,99,117,114,101) 
+charcode to ascii ye çevirmemiz lazım bunun için CyberChef i kullanıyoruz.
+
+https://gchq.github.io/CyberChef/#recipe=From_Charcode(%27Space%27,10)&input=NzQgOTcgMTE4IDk3IDgzIDk5IDExNCAxMDUgMTEyIDExNiA3MyAxMTUgODMgMTAxIDk5IDExNyAxMTQgMTAx 
+
+KulanıcıAdı=>admin
+Şifre=> JavaScriptIsSecure
+ Giriş yapınca FLAG-66Jq5u688he0y46564481WRh
+
+
+https://ringzer0ctf.com/challenges/30
+Sadece şifre isteyen bir form. Sayfa kaynağında yine ipucu vermiş.
+...
+// Look's like weak JavaScript auth script :)
+...
+if(Sha1.hash(p) == "b89356ff6151527e89c4f3e3d30c8e6586c63962") {
+...
+
+Bu seferki şifre sha1 hash. https://crackstation.net/ gidiyoruz
+b89356ff6151527e89c4f3e3d30c8e6586c63962   adminz
+Şifremizi adminz olarak girince 
+FLAG-bXNsYg9tLCaIX6h1UiQMmMYB
+
+
+https://ringzer0ctf.com/challenges/31
+Sayfa kaynağında javascriptimizin obfuscate(karmaşık) hale getirilmiş halini görüyoruz.
+<script>
+    // Look's like weak JavaScript auth script :)
+    var _0xc360=["\x76\x61\x6C","\x23\x63\x70\x61\x73\x73","\x61\x6C\x6B\x33","\x30\x32\x6C\x31","\x3F\x70\x3D","\x69\x6E\x64\x65\x78\x4F\x66","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x27\x65\x72\x72\x6F\x72\x27\x3E\x57\x72\x6F\x6E\x67\x20\x70\x61\x73\x73\x77\x6F\x72\x64\x20\x73\x6F\x72\x72\x79\x2E\x3C\x2F\x64\x69\x76\x3E","\x68\x74\x6D\x6C","\x23\x63\x72\x65\x73\x70\x6F\x6E\x73\x65","\x63\x6C\x69\x63\x6B","\x2E\x63\x5F\x73\x75\x62\x6D\x69\x74"];$(_0xc360[12])[_0xc360[11]](function (){var _0xf382x1=$(_0xc360[1])[_0xc360[0]]();var _0xf382x2=_0xc360[2];if(_0xf382x1==_0xc360[3]+_0xf382x2){if(document[_0xc360[7]][_0xc360[6]][_0xc360[5]](_0xc360[4])==-1){document[_0xc360[7]]=document[_0xc360[7]][_0xc360[6]]+_0xc360[4]+_0xf382x1;} ;} else {$(_0xc360[10])[_0xc360[9]](_0xc360[8]);} ;} );
+</script>
+----------------------------------------------
+<script>
+var....  ile başlayan satırı kopyala ve https://javascriptdeobfuscator.com/ adresinde boşluğa yapıştır.Deobfuscate.
+
+-------------------------------------------------
+$(".c_submit")["click"](function() {
+    var variable_0 = $("#cpass")["val"]();
+    var variable_1 = "alk3";
+    if (variable_0 == "02l1" + variable_1) {
+        if (document["location"]["href"]["indexOf"]("?p=") == -1) {
+            document["location"] = document["location"]["href"] + "?p=" + variable_0;
+        };
+    } else {
+        $("#cresponse")["html"]("<div class='error'>Wrong password sorry.</div>");
+    };
+});
+----------------------------------------------------------------
+Görünen o ki variable_0 bizim password alanına yazdığımız değişkeni ifade ediyor.
+variable_1 ise sabit bir değer "alk3"
+variable_0=="02l1"+variable_1  olduğuna göre şifremiz 02l1alk3 olmalı
+
+FLAG-5PJne3T8d73UGv4SCqN44DXj
+
+
+https://ringzer0ctf.com/challenges/63
+
+Martian message part 2
+I think that's the key "fselkladfklklakl"
+
+KDERE2UNX1W1H96GYQNUSQT1KPGB 
+
+CyberChef te Vigenere_Decode seçilip key e fselkladfklklakl
+Input a KDERE2UNX1W1H96GYQNUSQT1KPGB
+yazınca FLAGU2JNU1R1X96VOFNKHLB1GEWQ
+
+
+https://ringzer0ctf.com/challenges/26
+
+Martian message part 3
+RU9CRC43aWdxNDsxaWtiNTFpYk9PMDs6NDFS 
+
+CyberChef ten Base64(XOR-BruteForce) işlemini seçiyoruz
+Key = 03: FLAG-4jdr782jha62jaLL38972Q
+
+
+https://ringzer0ctf.com/challenges/49
+İndirdiğimiz arşivden flag.enc private.pem iki dosya çıkıyor. pem uzantılı dosyada 
+
+-----BEGIN RSA PRIVATE KEY-----
+..RSA ile şifrelenmiş private keyimiz...
+-----END RSA PRIVATE KEY-----
+openssl ile çözebiliriz.
+>openssl rsautl -decrypt -in flag.enc -out flag.txt -inkey private.pem
+>cat flag.txt
+FLAG-vOAM5ZcReMNzJqOfxLauakHx
+
+
+https://ringzer0ctf.com/challenges/212
+Big Brother is watching
+Even Google cannot find this one 
+Gerekli ön bilgi : https://www.ihs.com.tr/blog/robots-txt-nedir-ne-ise-yarar/
+
+https://ringzer0ctf.com/robots.txt
+
+User-agent: *
+Disallow: /16bfff59f7e8343a2643bdc2ee76b2dc/
+
+https://ringzer0ctf.com/16bfff59f7e8343a2643bdc2ee76b2dc/
+
+FLAG-G5swO95w0c7R5fq0sa85nVs5dK49O04i
+
+
+https://ringzer0ctf.com/challenges/122
+Brainsick
+
+Resmimizi kaydettikten sonra 
+>file 5411333e505440020a1799da6071851b.gif (gif olduğuna emin olalım)
+5411333e505440020a1799da6071851b.gif: GIF image data, version 89a, 440 x 385 
+>binwalk 5411333e505440020a1799da6071851b.gif(içine başka şeyler var mı kontrol edelim)
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             GIF image data, version "89a", 440 x 385
+78301         0x131DD         RAR archive data, first volume type: MAIN_HEAD
+
+131DD.rar isimli dosya varmış.
+
+>binwalk -e 5411333e505440020a1799da6071851b.gif (gif tekileri çıkaralım)
+
+131DD.rar ın içinden flag.gif çıktı. Resimde flagımız yazıyordu.
+FLAG-Th2K4s83uQh9xA
+
+
+https://ringzer0ctf.com/challenges/136
+[NİHAYET ÇÖZDÜM]
+ab1807dd57418405ac487d41d9d11075.ogg isimli ses dosyamızı sonic visualiser programı ile açıyoruz.
+
+Shift+G(Add  spectogram) yaptıktan sonra faremizin tekerini kendimize doğru çevirelim.
+Ses dosyasının spektogram hali şimdi daha anlaşılır bir hale geldi.
+|aztek_code lu | close to the solution [mors kodunun olduğu bölge] ringzer0team.com
+Başlangıçta aztek code lu bir resmimiz görünüyor.
+mspaintte baya bir düzeltmeden sonra resmimizi tertemiz bir aztec barcode a dönüştürdük.
+https://zxing.org/w/decode.jspx sitemize yükleyip flagımızı buluyoruz.
+
+the flag is : mathsRulesTheUniverse
+
+NOT:
+[mors kodunun olduğu bölge] yakınlaştırdım ve aşağıdaki gibi tek tek görüntüden yararlanarak yazdım.
+... .. -. - ..-. --- .-. ... .. --. .. -.. .-.. . ...- . .-.. ..--- ..- ... 
+. --. -. ..- .-. .- -.. .. --- --. .-. -.-. ..- ... . -.. . ..-. .- ..- .-.. 
+- -... .-.. --- -.-. -.- ... -. --- .- -.. -.. .. - .. --- -. .- .-.. -.-. --- 
+-.. . .-. . --.- ..- .. .-. . -..
+https://morsecode.scphillips.com/translator.html adresindeki çeviriciden faydalandım.
+Sonuçta aşağıdaki ipucu bize level sigid için yol gösterici olackmış ;)
+SINT FOR SIGID LEVEL 2 USE GNU RADIO GRC USE DEFAULT BLOCKS NO ADDITIONAL CODE REQUIRED
+
+
