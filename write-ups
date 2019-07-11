@@ -270,3 +270,31 @@ Sonuçta aşağıdaki ipucu bize level sigid için yol gösterici olackmış ;)
 SINT FOR SIGID LEVEL 2 USE GNU RADIO GRC USE DEFAULT BLOCKS NO ADDITIONAL CODE REQUIRED
 
 
+https://ringzer0ctf.com/challenges/110
+Can you see through the star
+https://ringzer0ctf.com/files/b842c879116dd19638fb6bf793b20b2c.tar
+dosyamızı dışarı çıkarttımızda bir 32bit exe dosyası görüyoruz.
+Generate Key butonuna tıkladığımızda ******************* lardan oluşan keyimiz maskeli bir şekilde görünüyor.
+Ben tersine mühendislik işleri için daha evvel sanalda win7 kurmuştum.Dosyayı 
+Kullanacağımız araç ise Simple Assembly Explorer open deyip açıyoruz exe dosyamızı.
+
+Solda crackmeform -> button1_Click(Object,EventArgs):Void  (Burası bizim butona tıklandığında yapılan işlemleri gösteren methodumuz)
+
+Sağda kodlara bakıyoruz.
+///////////////////////////////////////////////////////////////////////////////////////////
+private void button1_Click(object sender, EventArgs e)
+{
+   this.maskedTextBox1.Text = "FLAG-" + this.maskedTextBox1.Name + "vc" + this.button1.Name;
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+Görüldüğü gibi FLAG-textboxınadıvcbutonunadı şeklinde flagımızı oluşturuyor.
+Bize de sadece textbox1 in ve button1 in adını yerlerine yazmak kalıyor.
+
+Solda InitializeComponent():Void var.
+(Bileşenleri yani formdaki buton,başlık,etiket,textbox vb gibi boyut,isim gibi özellikleri barındıran bölümdür)
+
+this.button1.Name = "button1";(button1 in adı button1)
+this.maskedTextBox1.Name = "maskedTextBox1";(maskeliTextBox1 ini adı maskedTextBox1) olduğunu görüyoruz.
+
+Herşeyi yerli yerine yazdığımızda flagı bulmuş oluyoruz.
+FLAG-maskedTextBox1vcbutton1
