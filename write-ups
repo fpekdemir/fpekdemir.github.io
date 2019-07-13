@@ -298,3 +298,13 @@ this.maskedTextBox1.Name = "maskedTextBox1";(maskeliTextBox1 ini adı maskedText
 
 Herşeyi yerli yerine yazdığımızda flagı bulmuş oluyoruz.
 FLAG-maskedTextBox1vcbutton1
+
+https://ringzer0ctf.com/challenges/129
+Missing Pieces
+b730986ccddd83b5f6fb66d2ec362475.jpeg farklı kaydedip stegoveritas aracıyla taratıyoruz.
+stegoveritas b730986ccddd83b5f6fb66d2ec362475.jpeg
+işlem bitince cd results sonuçlara bakalım.
+b730986ccddd83b5f6fb66d2ec362475.jpeg_Blue_0.png yi açalım sağ altt qrcode görünüyor. o kısmı keselim ve kaydedelim
+https://zxing.org/w/decode.jspx sitesinde qrcode.png yi atalım. 
+
+flag-517qBd4tesUTUomYdz7W
