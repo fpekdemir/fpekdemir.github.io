@@ -317,3 +317,14 @@ Altta spectogram ekranımızda net bir şekilde flagımız ortaya çıkıyor.
 
 FLAG-t23jgjr8
 
+
+https://ringzer0ctf.com/challenges/106
+135553e7dfe65469fcf69c167fd1979a.mp3
+Bu ses dosyası sanki bir terslik var. Audacity ile açıp Ctrl+A seçelim.
+Etkiler den Ters Çevir işlemi sonucunda şarkımız meydana çıktı. 2:30 a gelinince sol kanalda bir ses kısılması görülüyor.
+Spektogram açılıp yakınlaştırıldığında oranın bir mor kodu olduğunu anlıyoruz.
+
+https://gchq.github.io/ dan From Morse Code seçilir. Ses dosyasında çıkarttığımız code yapıştırılır.
+..-. .-.. .- --. -.. --- -. -. . -- --- .. - .- .--- .- -- -... .
+
+FLAGDONNEMOITAJAMBE
