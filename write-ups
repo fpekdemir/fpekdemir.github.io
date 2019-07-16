@@ -178,6 +178,22 @@ variable_0=="02l1"+variable_1  olduğuna göre şifremiz 02l1alk3 olmalı
 FLAG-5PJne3T8d73UGv4SCqN44DXj
 
 
+
+https://ringzer0ctf.com/challenges/65
+Hide my ass in my home.
+https://ringzer0ctf.com/files/3d1e957be3b4880a4481d193eb563aff.tar.gz
+tar -xvzf 3d1e957be3b4880a4481d193eb563aff.tar.gz
+ls -la
+Vim yazı editöründe yazdıklarınızın başına dikkatsizlik sonucu bir şey gelmesin diye kurtarma dosyaları oluşturulur
+Bu dosyalar gizli dir. Bu sebep le "ls -la" ile dizini listeledik. 
+.me.swp dosyamız (me isimli yazı dosyamıza ait vim kurtarma dosyası) içeriğine bakalım
+cat .me.swp
+b0VIM 7.2|�S
+U3210#"! Utpad��������Flag-1s4g76jk89ffull of full and sunfull and i'm beautifull
+Flagımız göründü.
+Flag-1s4g76jk89f
+
+
 https://ringzer0ctf.com/challenges/63
 
 Martian message part 2
