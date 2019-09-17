@@ -1,0 +1,2 @@
+//file.txt nin içerisinde tekrarlananları birleştirir.
+awk '!a[$0]++' file.txt
