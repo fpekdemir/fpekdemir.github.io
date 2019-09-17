@@ -1,2 +1,4 @@
 //file.txt nin içerisinde tekrarlananları birleştirir.
 awk '!a[$0]++' file.txt
+Ya Da
+cat -n file_name | sort -uk2 | sort -nk1 | cut -f2-
