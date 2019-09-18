@@ -1,0 +1,74 @@
+Tüm bu hack işlerinde yeniyim. NASIL BAŞLAMALIYIM?
+-------------------------------------------------
+Hacker olmak için ilk adımı attığınız için tebrikler!
+
+Yeni Gelenler ve Burp Suite çalma listeleri için Hacker101 ile başlamanızı öneririz. Bunu tamamladığınızda, Hacker101 CTF ile çalışmaya ve diğer video derslerini istediğiniz gibi izlemeye başlayın.
+
+Hacker101 için önkoşul bulunmamakla birlikte, kesinlikle konuşursak, hack eğitiminizi hızlandırmak için öğrenebileceğiniz şeyler var. Başlamak için tüm bunları (veya herhangi birini) bilmenize gerek olmadığını unutmayın. İşte küratörlüğünde bir kaynak listesi:
+
+    Programlama
+        JavaScript: Bu, web sayfalarının çoğunda kullanılan dildir. Bunu anlamak, böcek avı için faydalıdır çünkü birçok böcek aslında JS kodundan kaynaklanır.
+        Python: Genel olarak, test sırasında çeşitli etkinlikleri otomatikleştirmek ve genel programlama için faydalı olmak için kullanılır.
+        SQL: Verilere erişmek ve işlemek için çoğu uygulama tarafından kullanılır. SQL bilgisi, kritik SQL Injection açıklarını keşfetmeye ve kullanmaya yardımcı olacaktır.
+    Ağ
+        Terminoloji kılavuzu: IP adresinden bağlantı noktasına kadar birçok terim duyacaksınız. Bu rehber bunu anlamanıza yardımcı olacaktır.
+        Ortak Bağlantı Noktası Numaraları: Ortak bağlantı noktası numaralarının ve ilgili hizmetlerin yararlı bir listesi.
+    Linux
+        Kendi web sunucunuzu kurma: Kendi içinde güvenlikle ilgili olmamakla birlikte, bu size harika bir bilgisayar korsanı olmak için bilmeniz gereken birçok komut ve kavramı öğretecektir.
+        Sanal Kutuda Kali Linux Kurulumu: Kali, birçok böcek avcısı tarafından kullanılan, bilgisayar korsanlığı odaklı bir Linux dağıtımıdır. Bu kılavuz, sanal bir makinede ayarlamanıza yardımcı olacaktır.
+        Komut Satırı Kılavuzu: Birçok komut satırı aracını bir hacker olarak kullanmaya başlayacaksınız, bu nedenle yapısına ve kullanımına aşinalıkta bulunmak değerlidir.
+  
+  
+ Bir süredir hacking ile uğraşıyordum. "Bug Bounty" den yararlanabileceğim mecralara nasıl ulaşabilirim?
+ --------------------------------------------------------------------------------------------------------
+ Bir HackerOne hesabına kaydolmanızı ve kapsamlı programlarımızı incelemenizi öneririz. Ayrıca, HackerOne'daki özel programlara Hacker101 CTF üzerinden davetiye alabilirsiniz.CTF te her 26 puana ulaştığınızda Hackerone size özel davetiye yollayabilir.
+ Bu, sizi daha az hackera sahip programlara sokar ki bu böylece daha etkili bir şekilde bug taraması yapabilirsiniz.
+ 
+
+Programlama Dilleri:
+--------------------------
+ Programlama başarılı bir hacker olmanın önemli bir parçasıdır. Bu, programlama dillerinin kapsamlı bir listesi değildir ve hemen hemen her biri, özellikle web'deki çoğu bilgisayar korsanlığı görevi için kullanılabilir, ancak özellikle yararlı veya dikkate değer bulduğumuz bir dil listesi.
+
+    Python ve Ruby: Otomasyon ve hızlı test ve analiz için, özellikle web hackleme için kullanışlıdır.
+    JavaScript: Python ve Ruby ile aynı görevler için kullanılabilir (daha az ilgili kütüphaneyle de olsa), ancak çoğunlukla web'deki kod analizinin yanı sıra istismarın bilinmesi de faydalıdır.
+    Object-C ve Swift: iOS uygulamalarının kaynak kod incelemesini yapmayı planlıyorsanız, bunları okuma yeteneği çok önemlidir.
+    Java ve Kotlin: Android uygulamalarının kaynak kodunu incelemeyi planlıyorsanız, bunları okuyabilmek çok önemli olacaktır. Java, derlenmiş bir uygulamanız olsa bile, orijinal kaynağa eşdeğer bir kodu (kabaca) okumanızı sağlayan Android uygulamaları için kod çözücüleri tarafından üretilir.
+    AArch64 Assembly: Gelişmiş gömülü ve mobil hackleme için en düşük seviyede olan makine kodlarının anlaşılması için önemlidir.
+    
+WebHack Araçları:
+-------------------------
+    Burp Suite: Bu tüm platformları desteklemesi ve geniş özellikleri nedeniyle web hack çevrelerinde en popüler proxy programıdır. En iyi şekilde yararlanmak için [playlistimize](https://www.hacker101.com/playlists/burp_suite) bakın.
+    mitmproxy: Bu Python ile yazılmış açık kaynaklı bir proxy. Yeni başlayanlar için önerilmez, ancak bu güçlü bir araç olabilir.
+    sqlmap: Bu, SQL enjeksiyon güvenlik açıklarının kolayca keşfedilmesini ve kullanılmasını sağlar. Her hatayı yakalamayacak, hatta bilinen bazı SQLi hatalarından yararlanamayacak. İşe yarayacak olayların% 80'inde hayatınızı çok daha kolaylaştıracak.
+    SSL Labs Sunucu Testi: Bu, web sunucularının SSL yapılandırmasını test etmek için webapp kullanımı kolaydır.
+    DirBuster: Web sunucularında gizli dosya ve dizinleri bulmak için kullanışlıdır.
+    Nikto2: DirBuster gibidir, ancak bilinen bazı güvenlik açıkları için temel kontrolleri yapar.
+    lazyrecon: Bu, keşif işlemini gerçekleştirmek için oluşturulmuş araçlar topluluğudur.
+ 
+
+Mobil Hack Araçları:
+-------------------------------
+
+     Burp Suite: Webhackde bahsedildiği gibi burada da yararlanılır. 
+     Frida: Tercihen iOS ve Android'de mobil uygulamalarındaki JavaScript veya yerel kitaplıklarına enjekte edilmesini sağlayan bir araçlar topluluğudur. Temelde, uygulamalarda işlevselliği değiştirmeyi, geliştirmeyi veya devre dışı bırakmayı basit hale getirir.
+     dex2jar: Değiştirme veya ayrıştırma için dex kodunu (Android bytecode) Java JAR dosyalarına dönüştürür.
+     JD-GUI: Bu, Android uygulamalarının kolay analizi için dex2jar'dan sonra kullanışlı olan bir Java decompiler'dir.
+     dotPeek: Xamarin Android uygulamalarıyla kullanım için bir .NET kod çözücü.
+     
+Masaüstü uygulamaları ve gömülü sistemler için araçlar:
+-----------------------------------------------------------
+Bu, yerel uygulamalar ve gömülü cihazlar için hackleme araçlarının bir listesidir ve kapsamlı olması amaçlanmamıştır; aksine, özellikle yararlı bulduğumuz araçları vurgulamak istiyoruz.
+
+    IDA Pro ve Hex-Rays Decompiler: IDA, disassemble/decompile işleri için mutlak altın standarttır. Neredeyse tüm belirsiz platformları destekleyen ve hayal edebileceğiniz her türlü özelliği eklemek için kapsamlı (kafa karıştırıcı) bir SDK desteği sunan harika bir araçtır. Bununla birlikte, fiyatı haklı çıkarmayı zorlaştırıyor.
+    Hopper: Bu, macOS ve Linux işletim sistemlerinde çalışan fantastik, düşük maliyetli bir sökme cihazı ve kod çözücüdür. IDA'nın yerini almasa da, çoğu uygulama için mükemmel bir seçimdir.
+    Binary Ninja: IDA'ya düşük maliyetli bir alternatif. API, kod analizini otomatikleştirmek için üçünden belki de en güçlü olanıdır.
+    Radare2: Bu, ikilik analizi yapmak için kullanılan bir araçlar setidir. Sökme işleminden hata ayıklamaya ve daha fazlasına kadar her şeyi içerir.
+    PE Explorer: Bu, Windows'ta kullanılan PE ikili dosyalarını analiz etmek için harika bir araçtır. Kaynakların yanı sıra çalıştırılabilir yapıların araştırılmasına da izin verir.
+    dotPeek: .NET derlemeleri için güçlü bir kod çözücü.
+    PEiD: Windows PE ikili dosyalarında kripto, paketleyici ve şifreleme yordamlarını algılamak için bir araç.
+    Unicorn Engine: Bu bağımsız bir araçtan çok bir kütüphanedir, ancak hızlı emülatörlerin yazılmasını bir esinti yapar. Özellikle tersine mühendislik için kullanışlıdır.
+    american fuzzy lop: AFL, birçok uygulama ve kütüphanede karmaşık hataların tespit edilmesini sağlayan son derece güçlü bir fuzzerdir.
+    Binwalk: Yazılım analizi ve çıkarma için kullanılır. Bu öncelikle gömülü Linux aygıtları için kullanışlıdır.
+    GNU strings: İsteğe bağlı ikili dosyalarda dizeleri bulur. Kesinlikle tersine mühendislik için olmasa da, en kullanışlı araçlar arasında yer alıyor.
+    HxD (Windows) 0xED (macOS): Bunlar, dosyaların ve blok aygıtların analizi ve manipülasyonu için yararlı olan grafiksel hex editörleridir.
+    QEMU: Çok sayıda sistemi / mimariyi destekleyen bir emülatör ve sanal makine. Bu, yerleşik bellenimi çalıştırmak gibi şeyler için faydalıdır, ancak bilgisayar korsanlığı için en uygun aracı yapan hata ayıklama olanaklarını da içerir. Kendi yerel mimarinize uygun olmayan ikili dosyaların kopyalanması için AFL ile birlikte kullanılabilir.
