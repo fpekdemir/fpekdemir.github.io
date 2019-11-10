@@ -2,3 +2,8 @@
 awk '!a[$0]++' file.txt
 Ya Da
 cat -n file_name | sort -uk2 | sort -nk1 | cut -f2-
+Ya Da sort -u
+
+#ParrotSec(ubuntu tabanlı) işletim sisteminde vmware üzerinde çalışırken network bağlantı düşmesi sonucu 
+#tekrar sağlıklı bir şekilde bağlanamadığı durumlarda kullandığım bash script.
+
