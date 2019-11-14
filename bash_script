@@ -21,3 +21,5 @@ echo "Gateway:$(sudo route -n | grep -v Destination | grep UG | cut -d ' ' -f10)
 *iplist.txt  (ip port) şeklinde bir listenin ip ile port arası boşluğu : ile değiştir.
 *Sonra satırbaşlarına https ekle.
 cat iplist.txt | sed 's/ /:/g' | sed 's/^/https\:\/\//' > https_probed.txt
+
+sed -E 's/.$//'  (satır sonlarındaki noktayı sil)
