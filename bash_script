@@ -23,3 +23,7 @@ echo "Gateway:$(sudo route -n | grep -v Destination | grep UG | cut -d ' ' -f10)
 cat iplist.txt | sed 's/ /:/g' | sed 's/^/https\:\/\//' > https_probed.txt
 
 sed -E 's/.$//'  (satır sonlarındaki noktayı sil)
+
+#du * ile listede 4 filename.ext gibi 4kb lik dosyalar bulunmakta bunları topluca silmek için 
+sudo rm `du * | awk '$1 == "4" {print $2}'`
+not:recursive kullanım için değildir.
