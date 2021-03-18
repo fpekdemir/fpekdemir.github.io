@@ -8,15 +8,16 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py --ssl-no-revoke
 python3 get-pip.py 
 pip install --upgrade setuptools pip #pip ve setuptools u güncelliyoruz
 pip install apache-superset          #pypi.org kaynağından apache-superset isimli paketimizi ve gerekli kütüphaneleri kurulumu yapılıyor.
-pip install pymssql			         #mssql desteği
+pip install pymssql		     #mssql desteği
 pip install pymysql                  #mysql desteği
 pip install psycopg2-binary          #postgresql desteği
 superset db upgrade                  #superset ilk kurulum veritabanı işlemleri.
 export FLASK_APP=superset            #flask uygulamamızın ismini koyuyoruz.
 flask fab create-admin               #admin hesabımızı oluşturuyoruz
 superset init                        #superset yapılandırmasını çalıştırıyoruz
-superset run --host=0.0.0.0 -p=8088 --with-threads --reload --debugger #superset normalde 127.0.0.1 localhostta çalışıyor.
-																	   #Dışarıdan erişilemiyordu. --host=0.0.0.0 kısmını ekledik.
+superset run --host=0.0.0.0 -p=8088 --with-threads --reload --debugger 
+#superset normalde 127.0.0.1 localhostta çalışıyor.
+#Dışarıdan erişilemiyordu. --host=0.0.0.0 kısmını ekledik.
 
 sudo iptables -I INPUT -p tcp --dport 8088 -j ACCEPT # Ubuntuda eğer gerekirse 8088 portunu açıyoruz.
 sudo ufw status # status: disable olmalı.
