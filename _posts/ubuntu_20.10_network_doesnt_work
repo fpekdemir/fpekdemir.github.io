@@ -1,0 +1,14 @@
+sudo mv /etc/netplan/*.yaml  /etc/netplan/01-netcfg.yaml
+
+sudo nano /etc/netplan/01-netcfg.yaml   
+##########################################
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp1s0:
+      dhcp4: true
+##########################################
+
+sudo netplan generate
+sudo netplan apply
