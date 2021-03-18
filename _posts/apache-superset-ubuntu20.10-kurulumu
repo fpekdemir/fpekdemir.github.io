@@ -2,6 +2,7 @@ sudo apt-get install python3-pip #ubuntu/debian repolarından python3 için pip 
 sudo pip3 install --upgrade setuptools pip #linux sistemimizdeki pip ve setuptools u güncelliyoruz
 
 sudo apt install python3-testresources #ubuntuda, "ERROR: launchpadlib 1.10.13 requires testresources, which is not installed." hatası alırsak bunu da kuruyoruz.
+sudo apt-get install python3-venv
 python3 -m venv supersetdata	#supersetdata isimli bir sanal ortam oluşturuyoruz.
 source supersetdata/bin/activate  # Sanal ortamımızı etkinleştiriyoruz.
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py --ssl-no-revoke
