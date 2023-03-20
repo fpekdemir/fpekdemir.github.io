@@ -1,6 +1,5 @@
 ---
-tag: bugbountytips
-title: subdomains_robotstxt_wordlist_gen.sh
+title: robots.txt dosyası aracılığıyla wordlist oluşturma
 ---
 
 ```bash
