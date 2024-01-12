@@ -90,3 +90,13 @@ relative_links:
   collections: false
 
 
+jekyll_admin:
+  hidden_links:
+    - staticfiles
+    - datafiles
+    - configuration
+  homepage: "pages"
+collections:
+  posts:
+    output: true
+    sidebar_label: posts
