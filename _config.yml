@@ -5,7 +5,7 @@ title: Blog / KnowledgeBase
 lang: tr-TR
 timezone:  Europe/Istanbul
 #repo:  # site repo [optional]
-data-theme: dark # default theme "dark" | "light"
+#data-theme: dark # default theme "dark" | "light"
 #discus-identifier:  # replace with your disqus shortname
 
 author:

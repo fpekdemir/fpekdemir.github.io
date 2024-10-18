@@ -1,3 +1,4 @@
+@use "sass:color";
 *,
 :after,
 :before {
@@ -394,7 +395,7 @@ main {
       color: #a9a9a9;
 
       &:hover {
-        color: darken(#a9a9a9, 25%);
+        color: color.adjust(#a9a9a9, $lightness: -25%);
         transition: color 0.3s ease-in;
       }
     }
