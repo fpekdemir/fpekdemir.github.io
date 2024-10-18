@@ -2,6 +2,7 @@
 title: 'ruby 3.3.1 archlinux/manjaro kurulumu(rbenv ile):'
 ---
 
+```
 ruby 3.3.1 archlinux/manjaro kurulumu(rbenv ile):
 
 sudo pacman -S --needed base-devel rust libffi libyaml openssl zlib yay
@@ -17,3 +18,4 @@ rbenv global 3.3.1
 nano ~/.bashrc
 echo 'export RUBY_HOME="$HOME/.rbenv/versions/3.3.1"' >> ~/.bashrc
 echo 'export PATH="$RUBY_HOME/bin:$PATH"' >> ~/.bashrc
+```
